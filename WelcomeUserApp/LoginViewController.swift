@@ -12,17 +12,10 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.userWelcomeLabel = "Welcome \(userName.text ?? "")!"
+        welcomeVC.userWelcomeLabel = "Welcome, \(userName.text ?? "")!"
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -61,8 +54,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
         guard unwindSegue.source is WelcomeViewController else { return }
-        userName.text = ""
-        userPassword.text = ""
+        userName.text = nil
+        userPassword.text = nil
     }
     
 }

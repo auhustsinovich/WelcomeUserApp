@@ -41,6 +41,7 @@ class LoginViewController: UIViewController {
         guard unwindSegue.source is WelcomeViewController else { return }
         userName.text = nil
         userPassword.text = nil
+        userName.becomeFirstResponder()
     }
 }
 

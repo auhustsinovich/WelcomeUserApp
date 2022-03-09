@@ -36,6 +36,7 @@ class WelcomeViewController: UIViewController {
 }
 
 extension WelcomeViewController {
+    
     func addGradientLayer(topColor: UIColor, bottomColor: UIColor) {
         let gradient = CAGradientLayer()
         gradient.frame = view.bounds

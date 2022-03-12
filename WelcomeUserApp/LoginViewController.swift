@@ -12,16 +12,19 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
+    private let userLogin = "User"
+    private let userPass = "password"
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.userWelcomeLabel = "Welcome, \(userName.text ?? "")!"
+        welcomeVC.userWelcomeLabel = userName.text
     }
     
     @IBAction func loginButtonPressed() {
         
         guard
-            userName.text == "User",
-            userPassword.text == "password"
+            userName.text == userLogin,
+            userPassword.text == userPass
         else {
             showAlert(title: "Invalid login or password",
                       message: "Please, enter correct login and password")
@@ -30,15 +33,15 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotNameButtonPressed() {
-        showAlert(title: "Oops!", message: "Your name is User 😉")
+        showAlert(title: "Oops!", message: "Your name is \(userLogin) 😉")
     }
     
     @IBAction func forgotPasswordButtonPressed() {
-        showAlert(title: "Oops!", message: "Your password is password 😉")
+        showAlert(title: "Oops!", message: "Your password is \(userPass) 😉")
     }
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
-        guard unwindSegue.source is WelcomeViewController else { return }
+       
         userName.text = nil
         userPassword.text = nil
         userName.becomeFirstResponder()

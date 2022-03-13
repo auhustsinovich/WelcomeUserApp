@@ -12,19 +12,24 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
-    private let userLogin = "User"
-    private let userPass = "password"
+    private let user = User.getPersonData()
+    
+    var viewControllers = [WelcomeViewController(), UINavigationController()]
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let welcomeVC = segue.destination as? WelcomeViewController else { return }
-        welcomeVC.userWelcomeLabel = userName.text
+        let tabBarController = segue.destination as! UITabBarController
+        let welcomeVC = tabBarController.viewControllers?.first as! WelcomeViewController
+        let navigationVC = tabBarController.viewControllers?.last as! UINavigationController
+        let aboutUserVC = navigationVC.topViewController as! UserAboutViewController
+        welcomeVC.user = user
+        aboutUserVC.user = user
     }
     
     @IBAction func loginButtonPressed() {
         
         guard
-            userName.text == userLogin,
-            userPassword.text == userPass
+            userName.text == user.login,
+            userPassword.text == user.password
         else {
             showAlert(title: "Invalid login or password",
                       message: "Please, enter correct login and password")
@@ -33,11 +38,11 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func forgotNameButtonPressed() {
-        showAlert(title: "Oops!", message: "Your name is \(userLogin) 😉")
+        showAlert(title: "Oops!", message: "Your name is \(user.login) 😉")
     }
     
     @IBAction func forgotPasswordButtonPressed() {
-        showAlert(title: "Oops!", message: "Your password is \(userPass) 😉")
+        showAlert(title: "Oops!", message: "Your password is \(user.password) 😉")
     }
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
@@ -77,3 +82,4 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
 }
+

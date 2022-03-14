@@ -12,9 +12,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var userPassword: UITextField!
     
-    private let user = User.getPersonData()
-    
-    var viewControllers = [WelcomeViewController(), UINavigationController()]
+    private let user = Person.getPersonData()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let tabBarController = segue.destination as! UITabBarController
@@ -46,7 +44,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func unwind(for unwindSegue: UIStoryboardSegue) {
-       
+        
         userName.text = nil
         userPassword.text = nil
         userName.becomeFirstResponder()

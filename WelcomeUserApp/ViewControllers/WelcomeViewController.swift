@@ -11,7 +11,6 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var welcomeLabel: UILabel!
     
-    var userWelcomeLabel: String!
     var user: User!
     
     private let firstColor = UIColor(

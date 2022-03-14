@@ -12,14 +12,6 @@ struct User {
     let login: String
     let password: String
     let person: Person
-    
-    static func getPersonData() -> User {
-        User(
-            login: "User",
-            password: "password",
-            person: Person(name: "Luka", surname: "Modric", age: 36, team: "Real Madrid", position: "midfielder")
-        )
-    }
 }
 
 struct Person {
@@ -32,5 +24,19 @@ struct Person {
     
     var fullname: String {
         "\(name) \(surname)"
+    }
+    
+    static func getPersonData() -> User {
+        User(
+            login: "User",
+            password: "password",
+            person: Person(
+                name: "Luka",
+                surname: "Modric",
+                age: 36,
+                team: "Real Madrid",
+                position: "midfielder"
+            )
+        )
     }
 }

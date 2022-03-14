@@ -8,12 +8,12 @@
 import UIKit
 
 class UserAboutViewController: UIViewController {
-    
-    var user: User!
-    
+ 
     @IBOutlet weak var personName: UILabel!
     @IBOutlet weak var personSurname: UILabel!
     @IBOutlet weak var personAge: UILabel!
+    
+    var user: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,5 @@ class UserAboutViewController: UIViewController {
         personName.text = user.person.name
         personSurname.text = user.person.surname
         personAge.text = String(user.person.age)
-
-        
     }
 }
